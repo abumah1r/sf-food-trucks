@@ -13,6 +13,7 @@ jobs:
     env:
       CONTAINER_REPOSITORY: ghcr.io/abumah1r/sf-food-trucks
       GITHUB_TOKEN: ${{ secrets.SF_FOOD_TRUCKS_GITHUB_TOKEN }}
+      VITE_MAPBOX_TOKEN: ${{ secrets.VITE_MAPBOX_TOKEN }}
 
     steps:
       - name: checkout repo
@@ -25,7 +26,7 @@ jobs:
         run: |
           IMAGE_NAME=${{ env.CONTAINER_REPOSITORY }}:${{ github.sha }}
           echo "IMAGE_NAME=$IMAGE_NAME" >> $GITHUB_ENV
-          docker build -t $IMAGE_NAME .
+          docker build --build-arg VITE_MAPBOX_TOKEN=${{ env.VITE_MAPBOX_TOKEN }} -t $IMAGE_NAME .
           docker push $IMAGE_NAME
 
       - name: set up flyctl
