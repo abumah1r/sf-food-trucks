@@ -2,6 +2,8 @@
 
 A modern web application that helps San Francisco residents and visitors find the closest food trucks based on their current location. Built with React and TypeScript, featuring an interactive map and real-time location services.
 
+**🌐 Live Demo:** https://sf-food-trucks.fly.dev
+
 ## ✨ Features
 
 - **Auto-location detection** - Automatically detects user's location on page load
@@ -127,6 +129,34 @@ npm run lint      # ESLint checks
 npm run typecheck # Type validation
 npm run test      # Run test suite
 npm run build     # Verify production builds without issues
+```
+
+## 🚀 Deployment
+
+This project automatically deploys to [Fly.io](https://fly.io) on every push to the main branch using GitHub Actions.
+
+### Deployment Pipeline
+
+The deployment workflow:
+
+1. **Builds** a Docker image from the latest code
+2. **Pushes** the image to GitHub Container Registry (GHCR)
+3. **Deploys** the image to Fly.io using the containerized approach
+
+### Live Application
+
+🌐 **Production**: https://sf-food-trucks.fly.dev
+
+### Manual Deployment
+
+To deploy manually (requires Fly.io CLI and authentication):
+
+```bash
+# Deploy directly from source
+flyctl deploy
+
+# Or deploy a specific Docker image
+flyctl deploy -i ghcr.io/abumah1r/sf-food-trucks:latest
 ```
 
 ## 🏗 Project Structure
