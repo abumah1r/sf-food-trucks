@@ -107,17 +107,35 @@ tests/
     └── utils.test.ts
 ```
 
-## 📦 Building for Production
+## 🔄 Continuous Integration
+
+This project uses GitHub Actions for automated testing and quality checks. Every push and pull request triggers:
+
+- **Linting** - Code style and quality checks with ESLint
+- **Type checking** - TypeScript compilation and type validation
+- **Testing** - Complete test suite with Vitest
+- **Building** - Production build verification
+
+The CI pipeline ensures code quality and prevents regressions. All checks must pass before merging.
+
+### Local CI Simulation
+
+Run the same checks locally before pushing:
 
 ```bash
-# Build the application
-npm run build
+npm run lint      # ESLint checks
+npm run typecheck # Type validation
+npm run test      # Run test suite
+npm run build     # Verify production builds without issues
 ```
 
 ## 🏗 Project Structure
 
 ```
 sf-food-trucks/
+├── .github/                  # GitHub Actions workflows
+│   └── workflows/
+│       └── ci.yml            # CI/CD pipeline
 ├── app/                      # Application source code
 │   ├── components/           # React components
 │   │   ├── ui/               # shadcn/ui components
@@ -134,8 +152,14 @@ sf-food-trucks/
 │   ├── route.tsx             # Route configuration
 │   └── styles/               # CSS and styling
 ├── tests/                    # Test files
+│   ├── components/           # Component tests
+│   ├── hooks/                # Hook tests
+│   ├── lib/                  # Utility tests
+│   └── setup.ts              # Test configuration
 ├── public/                   # Static assets
-└── docs/                     # Documentation
+├── eslint.config.js          # ESLint configuration
+├── vitest.config.ts          # Vitest test configuration
+└── package.json              # Dependencies and scripts
 ```
 
 ## 🤝 How to Contribute
