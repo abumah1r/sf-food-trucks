@@ -1,4 +1,4 @@
-name: Deploy
+name: CD
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
 
     env:
       CONTAINER_REPOSITORY: ghcr.io/abumah1r/sf-food-trucks
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.SF_FOOD_TRUCKS_GITHUB_TOKEN }}
 
     steps:
       - name: checkout repo
