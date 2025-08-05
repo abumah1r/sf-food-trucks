@@ -2,13 +2,17 @@ ARG NODE_VERSION=22.18.0
 FROM node:${NODE_VERSION}-slim AS base
 
 LABEL fly_launch_runtime="Node.js"
-LABEL org.opencontainers.image.source https://github.com/abumah1r/sf-food-trucks
+LABEL org.opencontainers.image.source="https://github.com/abumah1r/sf-food-trucks"
 
 WORKDIR /app
 
 ENV NODE_ENV="production"
 
 FROM base AS build
+
+# TIL vite env variables are bundled at build time
+ARG VITE_MAPBOX_TOKEN
+ENV VITE_MAPBOX_TOKEN=$VITE_MAPBOX_TOKEN
 
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential node-gyp pkg-config python-is-python3 && \
