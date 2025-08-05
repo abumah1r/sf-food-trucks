@@ -1,8 +1,6 @@
 import '@testing-library/jest-dom'
 import { vi } from 'vitest'
 
-vi.stubEnv('VITE_MAPBOX_TOKEN', 'test-mapbox-token')
-
 const mockMap = {
   remove: vi.fn(),
   fitBounds: vi.fn()
