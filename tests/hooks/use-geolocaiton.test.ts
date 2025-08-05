@@ -19,9 +19,8 @@ describe('useGeolocation', () => {
       },
       writable: true
     })
-
-    vi.stubEnv('VITE_MAPBOX_TOKEN', 'test-token')
   })
+
   afterEach(() => {
     vi.unstubAllEnvs()
   })
